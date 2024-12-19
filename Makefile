@@ -1,22 +1,27 @@
 # Variables
-CXX = g++
+CROSS_COMPILE = /path/to/toolchain/arm-linux-gnueabihf-
+CXX = $(CROSS_COMPILE)g++
 CXXFLAGS = -std=c++17 -Wall -Wextra -pthread
 TARGET = testhello
 SRC = testhello.cpp
 INSTALL_DIR = /usr/local/bin
+BUILD_DIR = build
 
 # Rules
-all: $(TARGET)
+all: $(BUILD_DIR) $(TARGET)
 
-$(TARGET): $(SRC) $(HEADERS)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRC)
+$(BUILD_DIR):
+	@mkdir -p $(BUILD_DIR)
+
+$(TARGET): $(SRC)
+	$(CXX) $(CXXFLAGS) -o $(BUILD_DIR)/$(TARGET) $(SRC)
 
 install: $(TARGET)
 	@mkdir -p $(INSTALL_DIR)
-	cp $(TARGET) $(INSTALL_DIR)
+	cp $(BUILD_DIR)/$(TARGET) $(INSTALL_DIR)
 
 clean:
-	rm -f $(TARGET)
+	rm -rf $(BUILD_DIR)
 
 uninstall:
 	rm -f $(INSTALL_DIR)/$(TARGET)

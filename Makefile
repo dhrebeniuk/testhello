@@ -1,8 +1,8 @@
 # Variables
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Wextra -pthread
-TARGET = csrfrouter
-SRC = main.cpp
+TARGET = testhello
+SRC = testhello.cpp
 INSTALL_DIR = /usr/local/bin
 
 # Rules

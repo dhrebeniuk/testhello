@@ -1,5 +1,5 @@
 # Variables
-CROSS_COMPILE = /path/to/toolchain/arm-linux-gnueabihf-
+CROSS_COMPILE = arm-linux-gnueabihf-
 CXX = $(CROSS_COMPILE)g++
 CXXFLAGS = -std=c++17 -Wall -Wextra -pthread
 TARGET = testhello
